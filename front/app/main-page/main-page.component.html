@@ -1,0 +1,66 @@
+<h1>Welcome!</h1>
+
+<a href="#" (click)="logout()">Log out</a>
+
+<main>
+    <form (ngSubmit)="submitForm()">
+        <table>
+            <tr>
+                <td><label for="x">X:</label></td>
+                <td>
+                    <div id="xDiv">
+                        <span *ngFor="let value of xValues">
+                            <label>{{value}}</label>
+                            <input type="radio" [value]="value" name="xValue" [(ngModel)]="x">
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="y">Y:</label></td>
+                <td><input type="text" id="y" name="y" [(ngModel)]="y" (blur)="validateY()"></td>
+            </tr>
+            <tr>
+                <td><label for="r">R:</label></td>
+                <td>
+                    <div id="rDiv">
+                        <span *ngFor="let value of rValues">
+                            <label>{{value}}</label>
+                            <input type="radio" [value]="value" name="rValue" [(ngModel)]="r">
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Показать кнопку или сообщение в зависимости от выбранных параметров -->
+        <button type="submit" *ngIf="x && y && r">Submit</button>
+        <span *ngIf="!(x && y && r)">Not all parameters selected</span>
+    </form>
+    <span>{{serverMessage}}</span>
+
+    <!-- Таблица для данных -->
+    <table>
+        <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Hit</th>
+                <th>Execution time</th>
+                <th>Current time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of results">
+                <td>{{ entry.x }}</td>
+                <td>{{ entry.y }}</td>
+                <td>{{ entry.r }}</td>
+                <td>{{ entry.hit }}</td>
+                <td>{{ entry.executionTime }} ms</td>
+                <td>{{ entry.currentTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <graph  [points]="points" [r]="+r" (pointAdded)="onPointAdded($event)"></graph>
+</main>
