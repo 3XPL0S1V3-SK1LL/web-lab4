@@ -1,0 +1,29 @@
+<main id="main">
+    <form (ngSubmit)="checkPassword()" id = "loginForm">
+        <h1>Login in Form</h1>
+      <h2>Enter your login</h2>
+      <input 
+        type="text" 
+        id="login" 
+        name="login" 
+        placeholder="Your login" 
+        [(ngModel)]="login">
+        <button (click)="checkLogin()">Check Login</button>
+      <div *ngIf="!loginValid" style="color: red;">
+        <p>Login is incorrect. Please try again.</p>
+      </div>
+  
+      <div *ngIf="showPasswordField">
+        <h2>Enter your password</h2>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="*Your password*" 
+          [(ngModel)]="password">
+        <p>{{greetingsMessage}}</p>
+      </div>
+      <br>
+      <button type="submit" *ngIf="showPasswordField">Enter</button>
+    </form>
+</main>
