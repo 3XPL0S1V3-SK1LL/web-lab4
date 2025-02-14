@@ -1,0 +1,18 @@
+/* Стиль для десктопного устройства */
+.desktop {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Стиль для планшетного устройства */
+  .tablet {
+    background-color: black;
+    color: white;
+  }
+  
+  /* Стиль для мобильного устройства */
+  .mobile {
+    background-color: yellow;
+    color: black;
+  }
+  

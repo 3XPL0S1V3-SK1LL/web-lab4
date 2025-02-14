@@ -1,0 +1,8 @@
+<main id="main">
+    <button (click)="ChangeForm()">{{text}}</button>
+    <login-form *ngIf="visible"></login-form>
+    <registration-form *ngIf="!visible"></registration-form>
+</main>
+   <div>
+   <h2>Current Time: {{ currentTime }}</h2> <!-- Отображаем текущее время -->
+</div>
